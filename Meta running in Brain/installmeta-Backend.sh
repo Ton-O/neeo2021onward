@@ -172,7 +172,7 @@ Do_Version_Check()
    MyVersion=$(cat package.json | jq ._id|xargs | cut -d @ -f3) 
    popd  >/dev/null
 
-   MyPKG=$(curl https://raw.githubusercontent.com/jac459/metadriver/master/package.json -s)
+   MyPKG=$(curl https://raw.githubusercontent.com/Ton-O/metadriver/master/package.json -s)
    LastVersion=$(echo $MyPKG | jq ._id|xargs | cut -d @ -f3)
 
    export InfoString="Last version: $LastVersion -  Installed version: $MyVersion"
@@ -270,7 +270,7 @@ function SubFunction_Update_Pacman()
    #else
    #   mkdir ~/safepackages
    #   cd ~/safepackages
-   #   curl -k 'https://raw.githubusercontent.com/jac459/neeo2021onward/main/Meta%20running%20in%20Brain/systemd-libs-246.6-1.1-armv7h.pkg.tar.xz' -o systemd-libs-246.6-1.1-armv7h.pkg.tar.xz
+   #   curl -k 'https://raw.githubusercontent.com/Ton-O/neeo2021onward/main/Meta%20running%20in%20Brain/systemd-libs-246.6-1.1-armv7h.pkg.tar.xz' -o systemd-libs-246.6-1.1-armv7h.pkg.tar.xz
    #fi
 
    sudo pacman -Su pacman --noconfirm --force     # use old style pacman command (--force will be replaced by --overwrite with this update)
@@ -479,7 +479,7 @@ function Do_Install_Meta()
    npm install
    mkdir active 
    mkdir library
-   curl 'https://raw.githubusercontent.com/jac459/meta-core/main/metaCore.json' -s -o active/metaCore.json      
+   curl 'https://raw.githubusercontent.com/Ton-O/meta-core/main/metaCore.json' -s -o active/metaCore.json      
 
    popd >/dev/null 
 
