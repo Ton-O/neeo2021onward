@@ -1,5 +1,5 @@
 #!/bin/bash
-# 
+#
 # Meta Installer for NEEO-Brain
 #
 # This script runs as a kind of state-machine with the follwoing states:
@@ -15,7 +15,7 @@
 #  7; Installing mosquitto and nodered
 #  8; Adding users (mosquitto, changing profile for neeo-user to chmod /steady/neeo-custom/.pm2/pub.sock & /steady/neeo-custom/.pm2/rpc.sock to 777
 #  9; Setting up autopstart via PM2
-#  9; Signalling whave run seuccesfully  
+#  9; Signalling we have run seuccesfully  
 
 
 # First, define some variables used in here
@@ -528,7 +528,7 @@ function Do_Install_NodeRed()
       echo ""
       echo ""
       echo "This tsk will run and multiple ways to install are attempted"
-      echo "    Therefore you WILL see errors, IGNORE ˜THEM!"
+      echo "    Therefore you WILL see errors, IGNORE THEM!"
       echo "     Check last statements, should be:"
       echo "        + node-red@1.2.6"
       echo "        added 316 packages from 284 contributors"
@@ -731,8 +731,10 @@ function Do_install_ADB()
       if [ "$?" -eq 0 ]
       then
          # now setup an adb_key... This key is used by adb to perform some form of security: it allows subsequent calls from this computer.
-         mkdir /steady/neeo-custom/.ssh 
-         python3 -c 'from adb_shell.auth.keygen import keygen; keygen("/steady/neeo-custom/.ssh/adb_key")'
+         mkdir /home/
+         mkdir mkdir /home/pi
+         mkdir /home/pi/.ssh 
+         python3 -c 'from adb_shell.auth.keygen import keygen; keygen("/home/pi/.ssh/adb_key")'
       fi
    fi
    
@@ -850,7 +852,7 @@ function Do_Setup_PM2()
       return
    fi
    #FLASK_APP=/opt/meta/PythonManager.py pm2 start   --name PythonManager python3 -- /usr/local/bin/flask run  --host=0.0.0.0 --port=5384
-   FLASK_APP=/steady/neeo-custom/.Python_stuff/PythonManager.py pm2 start  -o /tmp/PythonManager-o -e /tmp/PythonManager-e  --name PythonManager python -- /usr/bin/flask run --host=0.0.0.0 --port=5384
+   FLASK_APP=/steady/neeo-custom/.Python_stuff/PythonManager.py pm2 start  -o /tmp/PythonManager-o -e /tmp/PythonManager-e  --name PythonManager python -- /usr/local/bin/flask run --host=0.0.0.0 --port=5384
 
 
    popd >/dev/null
